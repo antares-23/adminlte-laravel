@@ -30,11 +30,16 @@
         <!-- /.search form -->
 
         <!-- Sidebar Menu -->
+        <!--ul class="sidebar-menu">
+            <!--- el resto del código ->
+            <li><a href="{!! url('products')  !!}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.products') }}</span></a></li>
+        </ul-->
+
         <ul class="sidebar-menu">
             <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
             <!-- Optionally, you can add icons to the links -->
             <!--li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li-->
-            <li class="active"><a href="#"><i class='fa fa-link'></i> <span>Panel de Control</span></a></li>
+            <li class="active"><a href="{{url('servers')}}"><i class='fa fa-link'></i> <span>Panel de Control</span></a></li>
             <li ><a href="#"><i class='fa fa-link'></i> <span>Visitas Virtuales</span></a></li>
             <li ><a href="#"><i class='fa fa-link'></i> <span>Usuarios</span></a></li>
             <li ><a href="#"><i class='fa fa-link'></i> <span>Alquiler</span></a></li>
