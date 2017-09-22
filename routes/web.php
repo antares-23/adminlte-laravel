@@ -26,6 +26,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::resource('servers','ServersController');
 
+Route::resource('tours','ToursController');
+
 //Route::get('products', 'ProductsController@index');
 
 //Route::resource('products','ServersController');
