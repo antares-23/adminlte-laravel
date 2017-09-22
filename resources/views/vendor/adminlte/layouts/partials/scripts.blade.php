@@ -8,3 +8,25 @@
       Both of these plugins are recommended to enhance the
       user experience. Slimscroll is required when using the
       fixed layout. -->
+
+<script src="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+/*$(function () {
+$( document ).ready(function() {
+alert("my message");
+});
+})
+*/
+
+$(function () {
+
+
+//Date picker
+$('#datepicker').datepicker({
+autoclose: true
+})
+
+
+})
+</script>

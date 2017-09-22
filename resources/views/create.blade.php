@@ -134,26 +134,15 @@
     </div>
 
 
+
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <!-- bootstrap datepicker -->
-    <script src="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
 
 
-    <script>
-        jQuery(function () {
 
-
-            //Date picker
-            $('#datepicker').datepicker({
-                autoclose: true
-            })
-
-
-        })
-    </script>
+    <
 @endsection
 
 
