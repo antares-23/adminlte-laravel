@@ -26,7 +26,7 @@
         </div>
 
 
-        @foreach($data as $server)
+        @foreach($servers as $server)
 
             <div class="row">
                 <div class="col-md-12">
@@ -76,23 +76,26 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+
                 <div class="box-body">
 
+                    {!! Form::open(['method' => 'POST', 'action'=>'ServersController@store', 'files'=>true]) !!}
+
                     <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <input id="exampleInputFile" type="file">
 
-
+                        {!! Form::file('files[]', ['class'=>'form-control','multiple' => 'multiple' ]) !!}
+                        {!! Form::submit('create',['class'=>'btn btn-primary']) !!}
                     </div>
+
+                    {!! Form::close() !!}
 
                 </div>
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+
                 </div>
-            </form>
+
         </div>
 
 

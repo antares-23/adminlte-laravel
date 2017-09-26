@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Server;
 
-class ServersController extends Controller
+class PhotosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,17 +14,6 @@ class ServersController extends Controller
     public function index()
     {
         //
-      //  return("hello form servers!");
-
-        $servers= Server::all();
-        foreach ($servers as $server){
-            $server->occupied_size =Server::folderSize($server->url)/1048576;
-        }
-
-
-       // $data->occupied_size =Server::folderSize('c:\AMD')/1048576;
-
-        return view('servers', compact('servers'));
     }
 
     /**
@@ -46,24 +34,7 @@ class ServersController extends Controller
      */
     public function store(Request $request)
     {
-    //   $file =  $request->file('file');
-      // echo $file->getClientOriginalName();
-
-        if($request->file('files'))
-        {
-            foreach($request->file('files') as $media)
-            {
-                if(!empty($media))
-                {
-                    //$destinationPath = 'uploads/companies/award';
-                    echo $filename = $media->getClientOriginalName();
-                    //$media->move($destinationPath, $filename);
-
-                    //$projectcommunication->media = $filename;
-                }
-            }
-        }
-
+        //
     }
 
     /**
@@ -110,6 +81,4 @@ class ServersController extends Controller
     {
         //
     }
-
-
 }
