@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Tours;
 
 class ToursController extends Controller
 {
@@ -13,7 +16,8 @@ class ToursController extends Controller
      */
     public function index()
     {
-       return view('tours');
+        $tours =  Tours::all();
+        return view('tours', compact('tours'));
     }
 
     /**
@@ -24,7 +28,6 @@ class ToursController extends Controller
     public function create()
     {
         //
-         //
         return view('create');
     }
 
@@ -36,6 +39,10 @@ class ToursController extends Controller
      */
     public function store(Request $request)
     {
+
+       // $request->date_start=Carbon::createFromFormat('Y-m-d', $request->date_start);
+        Tours::create($request->all());
+        return redirect('/tours');
         //
     }
 
@@ -47,7 +54,8 @@ class ToursController extends Controller
      */
     public function show($id)
     {
-        //
+        $tour=Tours::findOrFail($id);
+        return view('show', compact('tour'));
     }
 
     /**
@@ -59,6 +67,8 @@ class ToursController extends Controller
     public function edit($id)
     {
         //
+        $tour=Tours::findOrFail($id);
+        return view('/edit', compact('tour') );
     }
 
     /**
@@ -71,6 +81,7 @@ class ToursController extends Controller
     public function update(Request $request, $id)
     {
         //
+        return "Hello!";
     }
 
     /**
@@ -82,5 +93,9 @@ class ToursController extends Controller
     public function destroy($id)
     {
         //
+
+        $tours= Tours::whereId($id)->delete();
+        return redirect('tours');
+
     }
 }

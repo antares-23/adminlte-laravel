@@ -28,6 +28,12 @@ Route::resource('servers','ServersController');
 
 Route::resource('tours','ToursController');
 
+Route::resource('photos','PhotosController');
+
+Route::get('photos/create/{id}','PhotosController@create');
+
+Route::post('photos/create/{id}','PhotosController@create');
+
 //Route::get('products', 'ProductsController@index');
 
 //Route::resource('products','ServersController');

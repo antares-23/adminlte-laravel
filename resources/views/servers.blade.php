@@ -7,7 +7,7 @@
 @section('main-content')
     <div class="container-fluid ">
 
-        <div class="row">
+        <!--div class="row">
 
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
@@ -17,10 +17,10 @@
                         <span class="info-box-text">Usuarios Activos</span>
                         <span class="info-box-number">2,000</span>
                     </div>
-                    <!-- /.info-box-content -->
+
                 </div>
-                <!-- /.info-box -->
-            </div>
+
+            </div-->
 
 
         </div>
@@ -67,15 +67,13 @@
 
 
 
-        <div class="box box-primary">
-            <!-- /.box-header -->
-            <!-- form start -->
+        <!--div class="box box-primary">
+
 
             <div class="box-header with-border">
                 <h3 class="box-title">Alta de Archivos</h3>
             </div>
-            <!-- /.box-header -->
-            <!-- form start -->
+
 
                 <div class="box-body">
 
@@ -90,13 +88,10 @@
                     {!! Form::close() !!}
 
                 </div>
-                <!-- /.box-body -->
 
                 <div class="box-footer">
-
                 </div>
-
-        </div>
+        </div-->
 
 
 

@@ -1,10 +1,5 @@
 @extends('adminlte::layouts.app')
-
-
-
 @section('main-content')
-
-
 
     <link rel="stylesheet" href="http://localhost/admintest/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
@@ -17,11 +12,13 @@
         <div class="col-lg-8">
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Crear Tour</h3>
+                    <h3 class="box-title">Edición</h3>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                {!! Form::open(['method' =>'POST', 'action'=>'ToursController@store', ]) !!}
+
+                {!! Form::open(['method' =>'POST', '' ]) !!}
+                    <input type="hidden" name="_method" value="PUT">
                 <div class="form-horizontal">
                     <div class="box-body">
 
@@ -29,7 +26,7 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">Nombre</label>
                             <div class="col-sm-10">
-                                <input class="form-control" id="name" name="name" placeholder="Nombre del tour" type="text">
+                                <input class="form-control" id="name" name="name" placeholder="Nombre del tour" type="text" value="{{$tour->name}}">
                             </div>
                         </div>
 
@@ -37,15 +34,7 @@
                             <label for="url" class="col-sm-2 control-label">Url</label>
 
                             <div class="col-sm-10">
-                                <input class="form-control" id="url" name="url" placeholder="url" type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="total_size" class="col-sm-2 control-label">Espacio Asignado</label>
-
-                            <div class="col-sm-10">
-                                <input class="form-control" id="total_size" name="total_size" placeholder="Tamaño máximo total" type="text">
+                                <input class="form-control" id="url" name="url" placeholder="url" type="text" value="{{$tour->url}}">
                             </div>
                         </div>
 
@@ -53,8 +42,8 @@
                             <label for="nameTour" class="col-sm-2 control-label">Usuario</label>
 
                             <div class="col-sm-10">
-                                <select class="form-control" id="user_id" name="user_id">
-                                    <option value="1">User 1</option>
+                                <select class="form-control" id="user_id" name="user_id" >
+                                    <option value="1" >User 1</option>
                                     <option value="2">User 2</option>
 
                                 </select>

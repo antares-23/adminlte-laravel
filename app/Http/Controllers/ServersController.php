@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tours;
 use Illuminate\Http\Request;
 use App\Server;
 
@@ -17,7 +18,7 @@ class ServersController extends Controller
         //
       //  return("hello form servers!");
 
-        $servers= Server::all();
+        $servers= Tours::all();
         foreach ($servers as $server){
             $server->occupied_size =Server::folderSize($server->url)/1048576;
         }
