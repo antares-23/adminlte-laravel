@@ -16,7 +16,8 @@ class ToursController extends Controller
      */
     public function index()
     {
-        $tours =  Tours::all();
+        $tours = User::with('tours')->get();
+        //$tours =  Tours::all();
         return view('tours', compact('tours'));
     }
 
@@ -96,6 +97,17 @@ class ToursController extends Controller
 
         $tours= Tours::whereId($id)->delete();
         return redirect('tours');
+
+    }
+    public function finish($id){
+
+        $tour = Tours::find($id);
+        if($tour->status!=0)
+            $tour->where('id','=',$id)->update(array('status' =>'0'));
+        else
+            $tour->where('id','=',$id)->update(array('status' =>'1'));
+        return redirect('tours');
+
 
     }
 }

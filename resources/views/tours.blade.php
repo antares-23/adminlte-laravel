@@ -45,7 +45,15 @@ Tours
                                         <td>{{$tour->url}}</td>
                                         <td>{{$tour->user_id}}</td>
 
-                                        <td>{{$tour->status}}</td>
+
+                                        <td>
+
+                                            @if($tour->status==1)
+                                                Activo
+                                                @else
+                                            Baja
+                                                @endif
+                                        </td>
                                         <td>{{$tour->date_start}}</td>
 
                                         <td>
@@ -63,7 +71,12 @@ Tours
                                             </td-->
 
                                         <td>
-                                            <a href="{{route('tours.show',$tour->id)}}" class="btn btn-info" role="button" >Baja</a>
+                                            @if($tour->status==1)
+                                                <a href="{{route('tours.finish',$tour->id)}}" class="btn btn-info" role="button" >Baja</a>
+
+                                            @else
+                                            <a href="{{route('tours.finish',$tour->id)}}" class="btn btn-info" role="button" >Activar</a>
+                                            @endif
                                         </td>
 
                                         <td>
