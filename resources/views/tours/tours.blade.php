@@ -39,11 +39,11 @@ Tours
 
                                     <tbody>
 
-                                    @foreach ($tours as $tour)
+                                    @foreach ($tours->tours as $tour)
                                     <tr role="row">
                                         <td>{{$tour->name}}</td>
                                         <td>{{$tour->url}}</td>
-                                        <td>{{$tour->user_id}}</td>
+                                        <td>{{$tours->name}}</td>
 
 
                                         <td>

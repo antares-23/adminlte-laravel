@@ -15,7 +15,7 @@ class PhotosController extends Controller
     public function index()
     {
         $photos = Photos::all();
-        return view('photos', compact('photos'));
+        return view('photos.photos', compact('photos'));
     }
 
     /**
@@ -28,7 +28,7 @@ class PhotosController extends Controller
         //
         //return $id;
 
-        return view('createphoto', compact('id'));
+        return view('photos.createphoto', compact('id'));
     }
 
     /**
@@ -83,7 +83,7 @@ class PhotosController extends Controller
        $photos['id']=$id;
 
        //return $photos;
-        return view('photos', compact('photos'));
+        return view('photos.photos', compact('photos'));
     }
 
     /**

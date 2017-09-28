@@ -16,9 +16,11 @@ class ToursController extends Controller
      */
     public function index()
     {
-       // $tours = User::with('tours')->get();
-        $tours =  Tours::all();
-        return view('tours', compact('tours'));
+        $tours = User::findOrFail(1);//with('tours')->get();
+       // $tours =  Tours::all();
+
+      ///  echo $tours->tours;
+        return view('tours.tours', compact('tours'));
     }
 
     /**
@@ -29,7 +31,8 @@ class ToursController extends Controller
     public function create()
     {
         //
-        return view('create');
+        $users = User::all();
+        return view('tours.create', compact('users'));
     }
 
     /**
@@ -43,7 +46,7 @@ class ToursController extends Controller
 
        // $request->date_start=Carbon::createFromFormat('Y-m-d', $request->date_start);
         Tours::create($request->all());
-        return redirect('/tours');
+        return redirect('tours.tours');
         //
     }
 
@@ -56,7 +59,7 @@ class ToursController extends Controller
     public function show($id)
     {
         $tour=Tours::findOrFail($id);
-        return view('show', compact('tour'));
+        return view('tours.show', compact('tour'));
     }
 
     /**
@@ -69,7 +72,7 @@ class ToursController extends Controller
     {
         //
         $tour=Tours::findOrFail($id);
-        return view('/edit', compact('tour') );
+        return view('tours.edit', compact('tour') );
     }
 
     /**
@@ -96,7 +99,7 @@ class ToursController extends Controller
         //
 
         $tours= Tours::whereId($id)->delete();
-        return redirect('tours');
+        return redirect('tours.tours');
 
     }
     public function finish($id){
@@ -106,7 +109,7 @@ class ToursController extends Controller
             $tour->where('id','=',$id)->update(array('status' =>'0'));
         else
             $tour->where('id','=',$id)->update(array('status' =>'1'));
-        return redirect('tours');
+        return redirect('tours.tours');
 
 
     }

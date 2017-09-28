@@ -28,7 +28,6 @@ Route::resource('servers','ServersController');
 
 Route::resource('tours','ToursController');
 Route::get('tours/finish/{id}','ToursController@finish')->name('tours.finish');
-
 Route::resource('photos','PhotosController');
 
 Route::get('photos/create/{id}','PhotosController@create');
