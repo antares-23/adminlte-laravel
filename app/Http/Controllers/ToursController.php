@@ -16,8 +16,8 @@ class ToursController extends Controller
      */
     public function index()
     {
-        $tours = User::with('tours')->get();
-        //$tours =  Tours::all();
+       // $tours = User::with('tours')->get();
+        $tours =  Tours::all();
         return view('tours', compact('tours'));
     }
 

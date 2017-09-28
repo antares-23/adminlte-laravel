@@ -20,7 +20,7 @@ class ServersController extends Controller
 
         $servers= Tours::all();
         foreach ($servers as $server){
-            $server->occupied_size =Server::folderSize($server->url)/1048576;
+            $server->occupied_size = Server::folderSize($server->url)/1048576;
         }
 
 

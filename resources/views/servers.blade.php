@@ -41,10 +41,11 @@
                                 <span class="info-box-icon"><i class="ion ion-ios-cloud-upload-outline"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">{{$server->url}}</span>
+                                    {{$server->occupied_size}} de {{$server->total_size }}
                                     <span class="info-box-number">{{$server->total_size - $server->occupied_size }}</span>
 
-                                    <div class="progress">
-                                        <div class="progress-bar" style="width: {{ ($server->occupied_size / $server->total_size)*100 }}%"></div>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: {{ ($server->occupied_size / $server->total_size)*100 }}%"></div>
                                     </div>
                                     <span class="progress-description">
                                     Commments...
