@@ -38,7 +38,7 @@ Tours
                                     </thead>
 
                                     <tbody>
-
+                                    @if($tour->status==1)
                                     @foreach ($tours->tours as $tour)
                                     <tr role="row">
                                         <td>{{$tour->name}}</td>
@@ -91,6 +91,7 @@ Tours
 
                                     </tr>
                                         @endforeach
+                                        @endif
 
                                    </tbody>
 
