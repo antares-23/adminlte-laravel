@@ -6,6 +6,8 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Tours;
+use Auth;
+use Mail;
 
 class ToursController extends Controller
 {
@@ -16,10 +18,25 @@ class ToursController extends Controller
      */
     public function index()
     {
-        $tours = User::findOrFail(1);//with('tours')->get();
+
+        $user=Auth::user();
+
+        if($user->role){
+            $tours =  Tours::all();
+            $tours->is_admin=1;
+        }
+
+        else
+        {
+            $tours=  Tours::where('user_id', '=',$user->id)->get();
+            $tours->is_admin=0;
+        }
+
+//        $tours = User::findOrFail(1);//with('tours')->get();
        // $tours =  Tours::all();
 
-      ///  echo $tours->tours;
+       // dd($tours) ;
+
         return view('tours.tours', compact('tours'));
     }
 
@@ -31,7 +48,11 @@ class ToursController extends Controller
     public function create()
     {
         //
-        $users = User::all();
+        $user=Auth::user();
+        if($user->role)
+            $users = User::all();
+        else $users= User::findOrFail($user->id);
+
         return view('tours.create', compact('users'));
     }
 
@@ -46,7 +67,7 @@ class ToursController extends Controller
 
        // $request->date_start=Carbon::createFromFormat('Y-m-d', $request->date_start);
         Tours::create($request->all());
-        return redirect('tours.tours');
+        return redirect('tours');
         //
     }
 
@@ -99,7 +120,7 @@ class ToursController extends Controller
         //
 
         $tours= Tours::whereId($id)->delete();
-        return redirect('tours.tours');
+        return redirect('tours');
 
     }
     public function finish($id){
@@ -109,8 +130,20 @@ class ToursController extends Controller
             $tour->where('id','=',$id)->update(array('status' =>'0'));
         else
             $tour->where('id','=',$id)->update(array('status' =>'1'));
-        return redirect('tours.tours');
+        return redirect('tours.send');
 
+    }
 
+    public function send(){
+
+        //return "hello";
+        $title = "Titulo del Correo";
+        $content ="Esta es una prueba del correo, no borrar!";
+
+        Mail::send('email.mymail',['title'=>$title,'content'=>$content],function ($message)
+        {
+            $message->from('origin@mail.com','Test Server');
+            $message->to('destiny@mail.com', 'Mail Destinatary');
+        });
     }
 }

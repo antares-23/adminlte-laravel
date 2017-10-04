@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::group(['middleware' => 'auth'], function () {
     //    Route::get('/link1', function ()    {
 //        // Uses Auth Middleware
@@ -23,16 +25,17 @@ Route::group(['middleware' => 'auth'], function () {
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
     #adminlte_routes
 });
-
+Route::resource('users','UsersController');
+Route::get('tours/send','ToursController@send');
 Route::resource('servers','ServersController');
-
 Route::resource('tours','ToursController');
 Route::get('tours/finish/{id}','ToursController@finish')->name('tours.finish');
 Route::resource('photos','PhotosController');
 
 Route::get('photos/create/{id}','PhotosController@create');
-
 Route::post('photos/create/{id}','PhotosController@create');
+
+
 
 //Route::get('products', 'ProductsController@index');
 

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Tours;
 use Illuminate\Http\Request;
-use App\Server;
-use Auth;
-class ServersController extends Controller
+use App\User;
+
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,20 +14,7 @@ class ServersController extends Controller
      */
     public function index()
     {
-        $user=Auth::user();
-        if($user->role)
-            $servers= Tours::all();
-        else
-            $servers=  Tours::where('user_id', '=',$user->id)->get();
-
-        foreach ($servers as $server){
-            $server->occupied_size = Server::folderSize($server->url)/1048576;
-        }
-
-
-       // $data->occupied_size =Server::folderSize('c:\AMD')/1048576;
-
-        return view('servers', compact('servers'));
+        //
     }
 
     /**
@@ -39,6 +25,7 @@ class ServersController extends Controller
     public function create()
     {
         //
+        return view('user.add');
     }
 
     /**
@@ -49,24 +36,11 @@ class ServersController extends Controller
      */
     public function store(Request $request)
     {
-    //   $file =  $request->file('file');
-      // echo $file->getClientOriginalName();
+        //
 
-        if($request->file('files'))
-        {
-            foreach($request->file('files') as $media)
-            {
-                if(!empty($media))
-                {
-                    //$destinationPath = 'uploads/companies/award';
-                    echo $filename = $media->getClientOriginalName();
-                    //$media->move($destinationPath, $filename);
-
-                    //$projectcommunication->media = $filename;
-                }
-            }
-        }
-
+        echo $request;
+        User::create($request->all());
+        return redirect('tours');
     }
 
     /**
@@ -113,6 +87,4 @@ class ServersController extends Controller
     {
         //
     }
-
-
 }

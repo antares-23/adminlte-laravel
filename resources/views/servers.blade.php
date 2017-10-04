@@ -48,7 +48,8 @@
                                     <div class="progress-bar" style="width: {{ ($server->occupied_size / $server->total_size)*100 }}%"></div>
                                     </div>
                                     <span class="progress-description">
-                                    Commments...
+
+                                      Usuario: {{$server->user->name}}
                                 </span>
                                 </div>
                                 <!-- /.info-box-content -->

@@ -54,9 +54,13 @@
 
                             <div class="col-sm-10">
                                 <select class="form-control" id="user_id" name="user_id" required>
-                                    @foreach($users as $user)
-                                        <option value="{{$user->id}}">{{$user->name}}</option>
-                                    @endforeach
+                                    @if(count($users)>1)
+                                        @foreach($users as $user)
+                                            <option value="{{$user->id}}">{{$user->name}}</option>
+                                        @endforeach
+                                    @else
+                                        <option value="{{$users->id}}">{{$users->name}}</option>
+                                    @endif
                                 </select>
                             </div>
                         </div>

@@ -5,19 +5,19 @@
 @section('main-content')
 
     <div class="container-fluid ">
-
-
-Tours
-
+        Tours
 
 
         <div class="col-xs-12">
 
+            <a href="{{url('tours/create')}}" class="btn btn-info" role="button">Crear tour</a>
 
-            <a href="{{url('tours/create')}}" class="btn btn-info" role="button">Crear Tour</a>
+            @if($tours->is_admin )
+                <a href="{{url('users/create')}}" class="btn btn-info" role="button">Alta usuario</a>
+            @endif
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Hover Data Table</h3>
+                    <h3 class="box-title">Listado de Tours</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -31,19 +31,18 @@ Tours
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Fecha alta">Fecha alta</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Agregar imagenes">Agregar imagenes</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Fecha baja">Dar de baja</th>
-                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Baja">Editar</th>
-                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Baja">Eliminar</th>
+
 
                                     </tr>
                                     </thead>
 
                                     <tbody>
-                                    @if($tour->status==1)
-                                    @foreach ($tours->tours as $tour)
+
+                                    @foreach ($tours as $tour)
                                     <tr role="row">
                                         <td>{{$tour->name}}</td>
                                         <td>{{$tour->url}}</td>
-                                        <td>{{$tours->name}}</td>
+                                        <td>{{$tour->user->name}}</td>
 
 
                                         <td>
@@ -61,15 +60,6 @@ Tours
                                         </td>
 
 
-
-                                        <!--td><form method="post" action="/photos/{{$tour->id}}">
-                                                <!--input type="hidden" name="_method" value="DELETE"->
-                                                {{csrf_field()}}
-                                                <input type="submit" value="images" class="btn btn-danger">
-                                            </form>
-
-                                            </td-->
-
                                         <td>
                                             @if($tour->status==1)
                                                 <a href="{{route('tours.finish',$tour->id)}}" class="btn btn-info" role="button" >Baja</a>
@@ -79,19 +69,11 @@ Tours
                                             @endif
                                         </td>
 
-                                        <td>
-                                            <a href="{{route('tours.show',$tour->id)}}" class="btn btn-info" role="button" >Editar</a>
-                                        </td>
-                                        <td><form method="post" action="/tours/{{$tour->id}}">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                {{csrf_field()}}
-                                                <input type="submit" value="Delete" class="btn btn-danger">
-                                            </form>
-                                        </td>
+
 
                                     </tr>
                                         @endforeach
-                                        @endif
+
 
                                    </tbody>
 

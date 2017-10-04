@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
+//use App\User;
 
 class Tours extends Model
 {
@@ -17,7 +17,7 @@ class Tours extends Model
     ];
 
 
-    /*public function tour(){
+    public function user(){
         return $this->belongsTo(User::class );
-    }*/
+    }
 }
