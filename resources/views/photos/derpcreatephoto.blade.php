@@ -20,7 +20,7 @@
 
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Cargar foto</h3>
+                    <h3 class="box-title">Cargar  sfoto</h3>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
@@ -28,20 +28,34 @@
 
                 <div class="box-body">
 
-                    {!! Form::open(['method' => 'POST', 'action'=>'PhotosController@store', 'files'=>true]) !!}
+
 
                     <div class="form-group">
+                        {!! Form::open(['method' => 'POST', 'action'=>'PhotosController@store', 'files'=>true]) !!}
+
 
                         <div class="form-group">
                             {{ Form::hidden('photo_id', $id, array('id' => 'photo_id')) }}
                             {!! Form::file('files[]', ['class'=>'form-control','multiple' => 'multiple' ]) !!}
                         </div>
+derp
 
+                        <div class="form-group">
+                            {!! Form::submit('create',['class'=>'btn btn-primary']) !!}
+                        </div>
 
-                        {!! Form::submit('create',['class'=>'btn btn-primary']) !!}
+                        {!! Form::close() !!}
                     </div>
 
-                    {!! Form::close() !!}
+                    <div class="box-footer">
+                    @if (count($errors) > 0)
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                    </div>
 
                 </div>
             </div>

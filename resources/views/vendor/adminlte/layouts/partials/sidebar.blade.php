@@ -40,16 +40,16 @@
             <!-- Optionally, you can add icons to the links -->
             <!--li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li-->
             <li class="active"><a href="{{url('servers')}}"><i class='fa fa-link'></i> <span>Panel de Control</span></a></li>
-            <li ><a href="#"><i class='fa fa-link'></i> <span>Visitas Virtuales</span></a></li>
+            <!--li ><a href="#"><i class='fa fa-link'></i> <span>Visitas Virtuales</span></a></li>
             <li ><a href="#"><i class='fa fa-link'></i> <span>Usuarios</span></a></li>
             <li ><a href="#"><i class='fa fa-link'></i> <span>Alquiler</span></a></li>
             <li ><a href="#"><i class='fa fa-link'></i> <span>Facturación</span></a></li>
             <li ><a href="#"><i class='fa fa-link'></i> <span>Información y resumen</span></a></li>
-            <li ><a href="#"><i class='fa fa-link'></i> <span>Tickets</span></a></li>
+            <li ><a href="#"><i class='fa fa-link'></i> <span>Tickets</span></a></li-->
             <li ><a href="{{url('tours')}}"><i class='fa fa-link'></i> <span>Tours</span></a></li>
 
 
-            <li><a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.anotherlink') }}</span></a></li>
+            <!--li><a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.anotherlink') }}</span></a></li-->
 
 
 

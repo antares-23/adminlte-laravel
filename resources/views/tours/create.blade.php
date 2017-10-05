@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">Nombre</label>
                             <div class="col-sm-10">
-                                <input class="form-control" id="name" name="name" placeholder="Nombre del tour" type="text" required>
+                                <input class="form-control" id="name" name="name" placeholder="Nombre del tour" type="text" >
                             </div>
                         </div>
 
@@ -37,7 +37,7 @@
                             <label for="url" class="col-sm-2 control-label">Url</label>
 
                             <div class="col-sm-10">
-                                <input class="form-control" id="url" name="url" placeholder="url" type="text" required>
+                                <input class="form-control" id="url" name="url" placeholder="url" type="text" >
                             </div>
                         </div>
 
@@ -45,7 +45,7 @@
                             <label for="total_size" class="col-sm-2 control-label">Espacio Asignado</label>
 
                             <div class="col-sm-10">
-                                <input class="form-control" id="total_size" name="total_size" placeholder="Tamaño máximo total" type="number" required>
+                                <input class="form-control" id="total_size" name="total_size" placeholder="Tamaño máximo total" type="number" >
                             </div>
                         </div>
 
@@ -53,7 +53,8 @@
                             <label for="nameTour" class="col-sm-2 control-label">Usuario</label>
 
                             <div class="col-sm-10">
-                                <select class="form-control" id="user_id" name="user_id" required>
+                                <select class="form-control" id="user_id" name="user_id" >
+                                    <option>Seleccione un usuario</option>
                                     @if(count($users)>1)
                                         @foreach($users as $user)
                                             <option value="{{$user->id}}">{{$user->name}}</option>
@@ -71,6 +72,7 @@
                             <div class="col-sm-10 ">
                                 {{ Form::date('date_start', \Carbon\Carbon::now())  }}
                             </div>
+
                         </div>
 
 
@@ -78,6 +80,15 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
+
+                        @if (count($errors) > 0)
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+
 
                         <a href="/tours" class="btn btn-default" role="button">Cancel</a>
                         <button type="submit" class="btn btn-info pull-right">Alta</button>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Photos;
+use App\Http\Requests\PhotosRequest;
 
 class PhotosController extends Controller
 {
@@ -37,11 +38,12 @@ class PhotosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    //public function store(Request $request)
+    public function store(PhotosRequest $request)
     {
         $photo_id= $request->photo_id;
         //Photos::create($request->all());
-         //$photo = $request->all();
+        //$photo = $request->all();
        // print_r($request->all());
 
 

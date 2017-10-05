@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Tours;
 use Auth;
 use Mail;
+use App\Http\Requests\CreateToursRequest;
 
 class ToursController extends Controller
 {
@@ -62,7 +63,7 @@ class ToursController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateToursRequest $request)
     {
 
        // $request->date_start=Carbon::createFromFormat('Y-m-d', $request->date_start);
