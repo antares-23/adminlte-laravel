@@ -31,6 +31,7 @@ Route::resource('servers','ServersController');
 Route::resource('tours','ToursController');
 Route::get('tours/finish/{id}','ToursController@finish')->name('tours.finish');
 Route::resource('photos','PhotosController');
+Route::resource('cameras','CamerasController');
 
 Route::get('photos/create/{id}','PhotosController@create');
 Route::post('photos/create/{id}','PhotosController@create');
