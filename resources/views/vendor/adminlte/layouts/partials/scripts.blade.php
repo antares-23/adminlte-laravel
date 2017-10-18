@@ -9,48 +9,31 @@
       user experience. Slimscroll is required when using the
       fixed layout. -->
 
-<script src="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!--script src="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script-->
+
+
+
+
+
+
+
+<link rel='stylesheet' href=' {{asset('fullcalendar/fullcalendar.css')}}' />
+
+
+<script src="{{asset('fullcalendar/lib/moment.min.js')}}"></script>
+<script src="{{asset('fullcalendar/fullcalendar.js')}}"></script>
+<script src="{{asset('fullcalendar/locale/es.js')}}"></script>
+
+
+
+
+
 
 <script>
-    $(document).ready(function() {
-        // page is now ready, initialize the calendar...
-        $('#calendar').fullCalendar({
-            // put your options and callbacks here
-            events : [
-                    @foreach($cameras as $camera)
-                {
-                    title : '{{ $camera->name }}',
-                    start : '{{ $camera->task_date }}',
-                    url : '{{ route('cameras.show', $camera->id) }}'
-                },
-                @endforeach
-            ]
-        })
-    });
-</script>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
+    $(function () {
+    //Date picker
+        $('#datepicker').datepicker({
+     autoclose: true})
 
-
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
-
-<script>
-/*$(function () {
-$( document ).ready(function() {
-alert("my message");
-});
-})
-*/
-
-$(function () {
-
-
-//Date picker
-$('#datepicker').datepicker({
-autoclose: true
-})
-
-
-})
+    })
 </script>

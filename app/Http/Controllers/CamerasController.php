@@ -18,7 +18,8 @@ class CamerasController extends Controller
     {
         //
 
-    $cameras=Camera::all();
+        $cameras=Camera::all();
+       // dd( $cameras);
         return view('cameras.index',compact('cameras'));
        // return "HEkllo mofo";
     }

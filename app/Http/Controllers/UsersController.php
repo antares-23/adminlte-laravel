@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -37,8 +38,7 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
-
-        echo $request;
+        $request->merge(['password' => Hash::make($request->password)]);
         User::create($request->all());
         return redirect('tours');
     }

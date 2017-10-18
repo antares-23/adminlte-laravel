@@ -47,6 +47,7 @@
             <li ><a href="#"><i class='fa fa-link'></i> <span>Información y resumen</span></a></li>
             <li ><a href="#"><i class='fa fa-link'></i> <span>Tickets</span></a></li-->
             <li ><a href="{{url('tours')}}"><i class='fa fa-link'></i> <span>Tours</span></a></li>
+            <li ><a href="{{url('cameras')}}"><i class='fa fa-link'></i> <span>Reserva de equipo</span></a></li>
 
 
             <!--li><a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.anotherlink') }}</span></a></li-->

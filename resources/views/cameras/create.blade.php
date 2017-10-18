@@ -92,7 +92,7 @@
                         @endif
 
 
-                        <a href="/tours" class="btn btn-default" role="button">Cancel</a>
+                        <a href="{{url('cameras')}}" class="btn btn-default" role="button">Cancel</a>
                         <button type="submit" class="btn btn-info pull-right">Alta</button>
                     </div>
                     <!-- /.box-footer -->
@@ -108,8 +108,8 @@
 
 
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!--script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script-->
 
 
 @endsection
