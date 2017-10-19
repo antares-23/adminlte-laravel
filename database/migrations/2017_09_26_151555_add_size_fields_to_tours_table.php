@@ -16,8 +16,8 @@ class AddSizeFieldsToToursTable extends Migration
         Schema::table('tours', function (Blueprint $table) {
             //
 
-            $table->float('total_size')->default(0);
-            $table->float('occupied_size')->default(0);
+         //   $table->float('total_size')->default(0);
+          //  $table->float('occupied_size')->default(0);
 
 
         });

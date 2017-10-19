@@ -15,7 +15,7 @@ class ChangeStatusTypeFromTours extends Migration
     {
         Schema::table('tours', function (Blueprint $table) {
             //
-            $table->integer('status')->change();
+          //  $table->integer('status')->change();
         });
     }
 
