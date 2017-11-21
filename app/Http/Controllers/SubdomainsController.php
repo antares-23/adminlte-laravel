@@ -116,4 +116,18 @@ class SubdomainsController extends Controller
         $subdomain=Subdomain::whereId($id)->delete();
         return redirect('subdomains');
     }
+
+
+    public function finish($id){
+
+        $subdomain = Subdomain::find($id);
+        if($subdomain->status!=0)
+            $subdomain->where('id','=',$id)->update(array('status' =>'0'));
+        else
+            $subdomain->where('id','=',$id)->update(array('status' =>'1'));
+       return redirect('subdomains');
+
+    }
+
+
 }

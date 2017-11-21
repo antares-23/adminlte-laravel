@@ -41,20 +41,20 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <!--div class="form-group">
                             <label for="total_size" class="col-sm-2 control-label">Espacio Asignado</label>
 
                             <div class="col-sm-10">
                                 <input class="form-control" id="total_size" name="total_size" placeholder="Tamaño máximo total" type="number" >
                             </div>
-                        </div>
+                        </div-->
 
                         <div class="form-group">
-                            <label for="nameTour" class="col-sm-2 control-label">Usuario</label>
+                            <label for="nameTour" class="col-sm-2 control-label">Subdominio</label>
 
                             <div class="col-sm-10">
                                 <select class="form-control" id="user_id" name="user_id" >
-                                    <option>Seleccione un usuario</option>
+                                    <option>Seleccione un subdominio</option>
                                     @if(count($users)>1)
                                         @foreach($users as $user)
                                             <option value="{{$user->id}}">{{$user->name}}</option>

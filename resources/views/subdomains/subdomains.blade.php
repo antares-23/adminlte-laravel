@@ -65,11 +65,11 @@
 
 
                                         <td>
-                                            @if($tour->status==1)
-                                                <a href="{{route('tours.finish',$tour->id)}}" class="btn btn-info" role="button" >Baja</a>
+                                            @if($subdomain->status==1)
+                                                <a href="{{route('subdomains.finish',$subdomain->id)}}" class="btn btn-info" role="button" >Baja</a>
 
                                             @else
-                                            <a href="{{route('tours.finish',$tour->id)}}" class="btn btn-info" role="button" >Activar</a>
+                                            <a href="{{route('subdomains.finish',$subdomain->id)}}" class="btn btn-info" role="button" >Activar</a>
                                             @endif
                                         </td>
 

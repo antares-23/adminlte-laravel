@@ -10,8 +10,7 @@ class Tours extends Model
     //
     protected $fillable=[
         'name',
-        'url',
-        'user_id',
+        'subdomain_id',
         'date_start',
         'total_size'
     ];

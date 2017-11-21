@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRoleFieldToUsers extends Migration
+class CreateNewPhotosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class AddRoleFieldToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::create('photos', function (Blueprint $table) {
             //
-            $table->integer('role')->default(0);
+            $table->increments('id');
+            $table->string('filename');
+            $table->timestamps();
+
+            $table->integer('tour_id')->unsigned();
+            $table->foreign('tour_id')->references('id')->on('tours');
         });
     }
 
@@ -26,7 +31,7 @@ class AddRoleFieldToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('photos', function (Blueprint $table) {
             //
         });
     }

@@ -27,16 +27,12 @@ class ToursController extends Controller
             $tours->is_admin=1;
         }
 
-        else
+       /* else
         {
             $tours=  Tours::where('user_id', '=',$user->id)->get();
             $tours->is_admin=0;
-        }
+        }*/
 
-//        $tours = User::findOrFail(1);//with('tours')->get();
-       // $tours =  Tours::all();
-
-       // dd($tours) ;
 
         return view('tours.tours', compact('tours'));
     }

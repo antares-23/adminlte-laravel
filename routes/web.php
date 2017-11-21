@@ -30,6 +30,8 @@ Route::get('tours/send','ToursController@send');
 Route::resource('tours','ToursController');
 Route::get('subdomains/send','SubdomainsController@send');
 Route::resource('subdomains','SubdomainsController');
+Route::get('subdomains/finish/{id}','SubdomainsController@finish')->name('subdomains.finish');
+
 
 Route::resource('servers','ServersController');
 Route::get('tours/finish/{id}','ToursController@finish')->name('tours.finish');
