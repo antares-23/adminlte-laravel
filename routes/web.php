@@ -27,15 +27,19 @@ Route::group(['middleware' => 'auth'], function () {
 });
 Route::resource('users','UsersController');
 Route::get('tours/send','ToursController@send');
-Route::resource('servers','ServersController');
 Route::resource('tours','ToursController');
+Route::get('subdomains/send','SubdomainsController@send');
+Route::resource('subdomains','SubdomainsController');
+
+Route::resource('servers','ServersController');
 Route::get('tours/finish/{id}','ToursController@finish')->name('tours.finish');
 Route::resource('photos','PhotosController');
 Route::resource('cameras','CamerasController');
 
+
 Route::get('photos/create/{id}','PhotosController@create');
 Route::post('photos/create/{id}','PhotosController@create');
-
+Route::get('photos/listPhotos','PhotosController@listPhotos')->name('photos.listPhotos');
 
 
 //Route::get('products', 'ProductsController@index');

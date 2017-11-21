@@ -29,7 +29,7 @@
                         {{ Form::hidden('photo_id', $photos['id'], array('id' => 'photo_id')) }}
                             <div class="form-group">
                                 <div class="col-lg-12">
-                                    {!! Form::submit('create',['class'=>'btn btn-primary']) !!}
+                                    {!! Form::submit('Alta',['class'=>'btn btn-primary']) !!}
                                 </div>
                             </div>
 
@@ -55,6 +55,7 @@
         @foreach($photos['photos'] as $photo)
             <div class="col-md-1" style="padding-bottom: 20px;">
                 <img src="/images/{{$photo->filename}}"  style="width: 100px;">
+                <p>{{ $photo->id }}</p>
             </div>
         @endforeach
         </div>
