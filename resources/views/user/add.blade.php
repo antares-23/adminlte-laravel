@@ -16,7 +16,7 @@
                 <div class="form-horizontal">
                     <div class="box-body">
                         <div class="form-group">
-                            {!! Form::label('name','Nombre de usuario') !!}
+                            {!! Form::label('name','Nombre de cliente') !!}
                             {!! Form::text('name',null,['class'=>'form-control']) !!}
                         </div>
                         <div class="form-group">
@@ -27,8 +27,11 @@
                             {!! Form::label('password','Password') !!}
                             {!! Form::text('password',null,['class'=>'form-control']) !!}
                         </div>
+
+
+
                         <div class="form-group">
-                            {!! Form::submit('Agregar Usuario',['class'=>'btn btn-primary']) !!}
+                            {!! Form::submit('Agregar Cliente',['class'=>'btn btn-primary']) !!}
                             {{csrf_field()}}
                         </div>
                     </div>

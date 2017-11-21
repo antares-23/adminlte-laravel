@@ -10,9 +10,9 @@
 
         <div class="col-xs-12">
 
-            <a href="{{url('tours/create')}}" class="btn btn-info" role="button">Crear tour</a>
+            <a href="{{url('subdomains/create')}}" class="btn btn-info" role="button">Crear Nuevo Subdominio</a>
 
-            @if($tours->is_admin )
+            @if($subdomains->is_admin )
                 <a href="{{url('users/create')}}" class="btn btn-info" role="button">Alta cliente</a>
             @endif
 
@@ -42,22 +42,22 @@
 
                                     <tbody>
 
-                                    @foreach ($tours as $tour)
+                                    @foreach ($subdomains as $subdomain)
                                     <tr role="row">
-                                        <td>{{$tour->name}}</td>
-                                        <td>{{$tour->url}}</td>
-                                        <td>{{$tour->user->name}}</td>
+                                        <td>{{$subdomain->name}}</td>
+                                        <td>{{$subdomain->url}}</td>
+                                        <td>{{$subdomain->user->name}}</td>
 
 
                                         <td>
 
-                                            @if($tour->status==1)
+                                            @if($subdomain->status==1)
                                                 Activo
                                                 @else
                                             Baja
                                                 @endif
                                         </td>
-                                        <td>{{$tour->date_start}}</td>
+                                        <td>{{$subdomain->date_start}}</td>
 
                                         <!--td>
 

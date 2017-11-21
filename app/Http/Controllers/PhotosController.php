@@ -68,8 +68,8 @@ class PhotosController extends Controller
         }
 
         //return view('ToursController@index');
-        return redirect()->action('ToursController@index');
-
+        //return redirect()->action('ToursController@index');
+        return redirect()->action('PhotosController@show',1);
         //Photos::create($photo);
     }
 
@@ -79,14 +79,7 @@ class PhotosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-       $photos['photos'] = Photos::where('tour_id',$id)->orderBy('id','desc')->get();
-       $photos['id']=$id;
 
-       //return $photos;
-        return view('photos.photos', compact('photos'));
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -120,5 +113,15 @@ class PhotosController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function show($id)
+    {
+        // $photos['photos'] = Photos::where('tour_id',$id)->orderBy('id','desc')->get();
+        $photos['photos'] = Photos::orderBy('id','desc')->get();
+        $photos['id']=$id;
+
+        //return $photos;
+        return view('photos.photos', compact('photos'));
     }
 }
