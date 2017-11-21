@@ -64,6 +64,9 @@ class CamerasController extends Controller
     public function show($id)
     {
         //
+        $camera = Camera::findOrFail($id);
+        //return ($camera);
+        return view('cameras.show',compact('camera'));
     }
 
     /**
