@@ -25,10 +25,10 @@ class CreateToursRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'url'=> 'required',
-            'user_id' => 'required',
+           // 'url'=> 'required',
+            //'user_id' => 'required',
             'date_start' => 'required',
-            'total_size' => 'required',
+            //'total_size' => 'required',
             //
         ];
     }

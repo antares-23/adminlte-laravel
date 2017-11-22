@@ -6,6 +6,7 @@ use App\Tours;
 use Illuminate\Http\Request;
 use App\Server;
 use Auth;
+use App\Subdomain;
 class ServersController extends Controller
 {
     /**
@@ -17,18 +18,21 @@ class ServersController extends Controller
     {
         $user=Auth::user();
         if($user->role)
-            $servers= Tours::all();
+            //$servers= Tours::all();
+            $subdomains = Subdomain::all();
         else
-            $servers=  Tours::where('user_id', '=',$user->id)->get();
+            //$servers=  Tours::where('user_id', '=',$user->id)->get();
+            $subdomains = Subdomain::where('user_id', '=',$user->id)->get();
 
-        foreach ($servers as $server){
-            $server->occupied_size = Server::folderSize($server->url)/1048576;
+        foreach ($subdomains as $subdomain){
+            $subdomain->occupied_size = Server::folderSize($subdomain->url)/1048576;
         }
+
 
 
        // $data->occupied_size =Server::folderSize('c:\AMD')/1048576;
 
-        return view('servers', compact('servers'));
+        return view('servers', compact('subdomains'));
     }
 
     /**

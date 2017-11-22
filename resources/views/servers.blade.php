@@ -26,7 +26,7 @@
         </div>
 
 
-        @foreach($servers as $server)
+        @foreach($subdomains as $server)
 
             <div class="row">
                 <div class="col-md-12">

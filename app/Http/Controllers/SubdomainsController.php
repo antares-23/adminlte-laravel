@@ -34,6 +34,7 @@ class SubdomainsController extends Controller
             $subdomains->is_admin=0;
         }
 
+       // dd($subdomains);
         return view('subdomains.subdomains', compact('subdomains'));
     }
 
@@ -46,9 +47,15 @@ class SubdomainsController extends Controller
     {
         //
         $user=Auth::user();
-        if($user->role)
-            $users = User::all();
-        else $users= User::findOrFail($user->id);
+
+        //if($user->role)
+          //  $users = User::all();
+        //else $users= User::findOrFail($user->id);
+        if($user->role){
+            $users=  User::pluck('name','id');
+        }
+        else
+            $users=  User::where('id','=',$user->id)->pluck('name','id');
 
         return view('subdomains.create', compact('users'));
     }

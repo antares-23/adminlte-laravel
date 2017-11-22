@@ -5,18 +5,18 @@
 @section('main-content')
 
     <div class="container-fluid ">
-        Tours
-
+        <h1>Tours</h1>
 
         <div class="col-xs-12">
 
-            <a href="{{url('tours/create')}}" class="btn btn-info" role="button">Crear tour</a>
+            @if(!count($tours))
+                <a href="{{url('subdomains')}}" class="btn btn-info" role="button">Crear Subdominio</a>
 
-            @if($tours->is_admin )
-                <a href="{{url('users/create')}}" class="btn btn-info" role="button">Alta cliente</a>
+
+            @elseif($tours->subdomain_id)
+                <a href="{{url('tours/create',$tours->subdomain_id)}}" class="btn btn-info" role="button">Crear tour</a>
             @endif
 
-            <a href="{{route('photos.show',1)}}" class="btn btn-info" role="button">Imagenes</a>
 
 
             <div class="box">
@@ -25,18 +25,18 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                    @if(count($tours))
+                    <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                        <div class="row">
+
+                            <div class="col-sm-12">
+                                <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                                     <thead>
                                     <tr role="row">
                                         <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Nombre">Nombre</th>
-                                        <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Nombre">Url</th>
-                                        <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Nombre">Cliente</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Estatus">Estatus</th>
-                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Fecha alta">Fecha alta</th>
-                                        <!--th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Agregar imagenes">Agregar imagenes</th-->
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Fecha alta">Fecha activo</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Fecha baja">Dar de baja</th>
-
-
                                     </tr>
                                     </thead>
 
@@ -45,12 +45,7 @@
                                     @foreach ($tours as $tour)
                                     <tr role="row">
                                         <td>{{$tour->name}}</td>
-                                        <td>{{$tour->url}}</td>
-                                        <td>{{$tour->user->name}}</td>
-
-
                                         <td>
-
                                             @if($tour->status==1)
                                                 Activo
                                                 @else
@@ -58,12 +53,6 @@
                                                 @endif
                                         </td>
                                         <td>{{$tour->date_start}}</td>
-
-                                        <!--td>
-
-                                        </td-->
-
-
                                         <td>
                                             @if($tour->status==1)
                                                 <a href="{{route('tours.finish',$tour->id)}}" class="btn btn-info" role="button" >Baja</a>
@@ -72,9 +61,6 @@
                                             <a href="{{route('tours.finish',$tour->id)}}" class="btn btn-info" role="button" >Activar</a>
                                             @endif
                                         </td>
-
-
-
                                     </tr>
                                         @endforeach
 
@@ -86,6 +72,7 @@
                         </div>
 
                     </div>
+                        @endif
                 </div>
                 <!-- /.box-body -->
             </div>

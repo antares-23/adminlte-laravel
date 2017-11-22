@@ -52,7 +52,7 @@
                             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                         </div>
                         <div class="form-group has-feedback">
-                            <input type="password" class="form-control" placeholder="{{ trans('adminlte_lang::message.retrypepassword') }}" name="password_confirmation"/>
+                            <input type="password" class="form-control" placeholder="{{ trans('adminlte_lang::message.password') }}" name="password_confirmation"/>
                             <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                         </div>
                         <div class="row">
@@ -76,13 +76,13 @@
                         </div>
                     </form>
 
-                    @include('adminlte::auth.partials.social_login')
 
-                    <a href="{{ url('/login') }}" class="text-center">{{ trans('adminlte_lang::message.membreship') }}</a>
+
+
                 </div><!-- /.form-box -->
 
 
-                @include('adminlte::auth.partials.social_login')
+
 
                 <a href="{{ url('/login') }}" class="text-center">{{ trans('adminlte_lang::message.membreship') }}</a>
             </div><!-- /.form-box -->

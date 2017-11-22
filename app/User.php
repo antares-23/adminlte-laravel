@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Tours;
+use App\Subdomain;
 
 class User extends Authenticatable
 {
@@ -28,8 +28,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function tours(){
+    public function Subdomains(){
 
-        return $this->hasMany(Tours::class);
+        return $this->hasOne(Subdomain);
     }
 }

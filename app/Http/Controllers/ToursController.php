@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Tours;
 use Auth;
 use Mail;
 use App\Http\Requests\CreateToursRequest;
+//use Illuminate\Support\Facades\DB;
+use App\Subdomain;
 
 class ToursController extends Controller
 {
@@ -19,22 +20,26 @@ class ToursController extends Controller
      */
     public function index()
     {
-
         $user=Auth::user();
+        $subdomain =  Subdomain::select('id')->where('user_id', '=',$user->id)->get();
 
-        if($user->role){
-            $tours =  Tours::all();
-            $tours->is_admin=1;
+        if($subdomain->count())
+        {
+            $tours =  Tours::where('subdomain_id','=',$subdomain[0]->id)->get();
+            $tours->subdomain_id=$subdomain[0]->id;
+            $tours->is_admin=$user->role?1:0;
         }
 
-       /* else
+        else
         {
-            $tours=  Tours::where('user_id', '=',$user->id)->get();
-            $tours->is_admin=0;
-        }*/
+            $tours =  null;
+           // $tours->subdomain_id=0;
+
+        }
 
 
-        return view('tours.tours', compact('tours'));
+
+       return view('tours.tours', compact('tours'));
     }
 
     /**
@@ -42,15 +47,11 @@ class ToursController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         //
-        $user=Auth::user();
-        if($user->role)
-            $users = User::all();
-        else $users= User::findOrFail($user->id);
 
-        return view('tours.create', compact('users'));
+        return view('tours.create', compact('id'));
     }
 
     /**
@@ -63,7 +64,10 @@ class ToursController extends Controller
     {
 
        // $request->date_start=Carbon::createFromFormat('Y-m-d', $request->date_start);
+
+      //  dd($request->all());
         Tours::create($request->all());
+
         return redirect('tours');
         //
     }

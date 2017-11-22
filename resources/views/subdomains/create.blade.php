@@ -21,59 +21,50 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
+
+
+
+
+
+
+
+
+
                 {!! Form::open(['method' =>'POST', 'action'=>'SubdomainsController@store', ]) !!}
                 <div class="form-horizontal">
                     <div class="box-body">
+                        <div class="container-fluid ">
 
-
-                        <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">Nombre de Subdominio</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" id="name" name="name" placeholder="Nombre del subdominio" type="text" >
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="url" class="col-sm-2 control-label">Url</label>
-
-                            <div class="col-sm-10">
-                                <input class="form-control" id="url" name="url" placeholder="url" type="text" >
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="nameTour" class="col-sm-2 control-label">Usuario</label>
-
-                            <div class="col-sm-10">
-                                <select class="form-control" id="user_id" name="user_id" >
-                                    <option>Seleccione un cliente</option>
-                                    @if(count($users)>1)
-                                        @foreach($users as $user)
-                                            <option value="{{$user->id}}">{{$user->name}}</option>
-                                        @endforeach
-                                    @else
-                                        <option value="{{$users->id}}">{{$users->name}}</option>
-                                    @endif
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('total_size','Espacio Asignado  (GB)') !!}
-                            {!! Form::number('total_size',null,['class'=>'form-control']) !!}
-
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="date_start" class="col-sm-2 control-label">Fecha Inicio</label>
-
-                            <div class="col-sm-10 ">
-                                {{ Form::date('date_start', \Carbon\Carbon::now())  }}
+                            <div class="form-group">
+                                {!! Form::label('name','Nombre de Subdominio') !!}
+                                {!! Form::text('name',null,['class'=>'form-control']) !!}
                             </div>
 
+                            <div class="form-group">
+                                {!! Form::label('url','Url') !!}
+                                {!! Form::text('url',null,['class'=>'form-control']) !!}
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::label('user_id','Cliente') !!}
+                                {!! Form::select('user_id',$users,null ,array('placeholder' => 'Seleccione Cliente','class' => 'form-control')) !!}
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::label('total_size','Espacio Asignado  (GB)') !!}
+                                {!! Form::number('total_size',null,['class'=>'form-control']) !!}
+
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::label('name','Fecha de Inicio') !!}
+                                {!! Form::date('date_start', \Carbon\Carbon::now(),['class'=>'form-control'])  !!}
+                            </div>
+
+
                         </div>
+
+
 
 
 

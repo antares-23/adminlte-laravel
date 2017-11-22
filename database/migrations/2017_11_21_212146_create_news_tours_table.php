@@ -17,7 +17,7 @@ class CreateNewsToursTable extends Migration
             //
             $table->increments('id');
             $table->string('name');
-            $table->string('url');
+
             $table->integer('status')->default(1);
             $table->date('date_start');
             $table->date('date_end')->nullable();

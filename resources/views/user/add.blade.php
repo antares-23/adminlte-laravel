@@ -11,7 +11,6 @@
         </div>
         <div class="box-body">
             <div class="container-fluid ">
-
                 {!! Form::open(['method' =>'POST', 'action'=>'UsersController@store', ]) !!}
                 <div class="form-horizontal">
                     <div class="box-body">
@@ -27,9 +26,6 @@
                             {!! Form::label('password','Password') !!}
                             {!! Form::text('password',null,['class'=>'form-control']) !!}
                         </div>
-
-
-
                         <div class="form-group">
                             {!! Form::submit('Agregar Cliente',['class'=>'btn btn-primary']) !!}
                             {{csrf_field()}}
@@ -37,9 +33,8 @@
                     </div>
                 </div>
                 {!! Form::close() !!}
-
+            </div>
         </div>
-    </div>
     </div>
 
 @endsection
