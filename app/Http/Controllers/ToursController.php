@@ -33,7 +33,6 @@ class ToursController extends Controller
         else
         {
             $tours =  null;
-           // $tours->subdomain_id=0;
 
         }
 
@@ -81,6 +80,7 @@ class ToursController extends Controller
     public function show($id)
     {
         $tour=Tours::findOrFail($id);
+
         return view('tours.show', compact('tour'));
     }
 
@@ -94,6 +94,7 @@ class ToursController extends Controller
     {
         //
         $tour=Tours::findOrFail($id);
+
         return view('tours.edit', compact('tour') );
     }
 
@@ -106,8 +107,14 @@ class ToursController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        return "Hello!";
+
+       $tour = Tours::findorFail($id);
+       $tour->update($request->all());
+
+       //return "ok!";
+       return redirect('tours');
+
+
     }
 
     /**
@@ -131,7 +138,9 @@ class ToursController extends Controller
             $tour->where('id','=',$id)->update(array('status' =>'0'));
         else
             $tour->where('id','=',$id)->update(array('status' =>'1'));
-        return redirect('tours.send');
+        return redirect('tours');
+       // return redirect('tours.send');
+
 
     }
 

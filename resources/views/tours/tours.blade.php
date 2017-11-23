@@ -36,6 +36,7 @@
                                         <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Nombre">Nombre</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Estatus">Estatus</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Fecha alta">Fecha activo</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Fecha baja">Editar</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Fecha baja">Dar de baja</th>
                                     </tr>
                                     </thead>
@@ -53,6 +54,9 @@
                                                 @endif
                                         </td>
                                         <td>{{$tour->date_start}}</td>
+                                        <td>
+                                            <a href="{{route('tours.edit',$tour->id)}}" class="btn btn-info" role="button" >Editar</a>
+                                        </td>
                                         <td>
                                             @if($tour->status==1)
                                                 <a href="{{route('tours.finish',$tour->id)}}" class="btn btn-info" role="button" >Baja</a>

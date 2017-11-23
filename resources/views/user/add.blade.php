@@ -1,7 +1,4 @@
 @extends('adminlte::layouts.app')
-
-
-
 @section('main-content')
 
     <div class="col-md-8">
@@ -27,9 +24,15 @@
                             {!! Form::text('password',null,['class'=>'form-control']) !!}
                         </div>
                         <div class="form-group">
+                            {{ Form::checkbox('role', '1') }}
+                            {!! Form::label('role','Administrador') !!}
+                        </div>
+
+                        <div class="form-group">
                             {!! Form::submit('Agregar Cliente',['class'=>'btn btn-primary']) !!}
                             {{csrf_field()}}
                         </div>
+
                     </div>
                 </div>
                 {!! Form::close() !!}

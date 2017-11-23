@@ -19,22 +19,18 @@ class SubdomainsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {        //
         $user=Auth::user();
 
         if($user->role){
             $subdomains =  Subdomain::all();
             $subdomains->is_admin=1;
         }
-
         else
         {
             $subdomains=  Subdomain::where('user_id', '=',$user->id)->get();
             $subdomains->is_admin=0;
         }
-
-       // dd($subdomains);
         return view('subdomains.subdomains', compact('subdomains'));
     }
 
@@ -48,14 +44,16 @@ class SubdomainsController extends Controller
         //
         $user=Auth::user();
 
-        //if($user->role)
-          //  $users = User::all();
-        //else $users= User::findOrFail($user->id);
+        //is admin...
         if($user->role){
-            $users=  User::pluck('name','id');
+            ///$users=  User::pluck('name','id');
+            $users =  User::leftJoin('subdomains','users.id','=','subdomains.user_id')->whereNull('subdomains.user_id')->pluck('users.name','users.id');
         }
         else
+        {
             $users=  User::where('id','=',$user->id)->pluck('name','id');
+        }
+
 
         return view('subdomains.create', compact('users'));
     }

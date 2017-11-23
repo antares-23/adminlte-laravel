@@ -12,6 +12,7 @@ class Tours extends Model
         'name',
         'subdomain_id',
         'date_start',
+        'role'
         //'total_size'
     ];
 

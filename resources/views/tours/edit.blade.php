@@ -17,76 +17,46 @@
         <div class="col-lg-8">
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Horizontal Form</h3>
+                    <h3 class="box-title">Tours</h3>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
 
-                {!! Form::open(['method' =>'POST', 'action'=>'ToursController@update' ]) !!}
-                    <input type="hidden" name="_method" value="PUT">
+                {!! Form::model($tour, ['method'=>'PATCH', 'action'=>['ToursController@update', $tour->id]]) !!}
                 <div class="form-horizontal">
                     <div class="box-body">
-
-
-                        <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">Nombre</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" id="name" name="name" placeholder="Nombre del tour" type="text">
+                        <div class="container-fluid ">
+                            <div class="form-group">
+                                {!! Form::label('name','Nombre del Tour') !!}
+                                {!! Form::text('name',$tour->name,['class'=>'form-control']) !!}
+                                {!! Form::hidden('subdomain_id',$tour->subdomain_id) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('name','Fecha de Inicio') !!}
+                                {!! Form::date('date_start', $tour->date_start,['class'=>'form-control'])  !!}
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="url" class="col-sm-2 control-label">Url</label>
-
-                            <div class="col-sm-10">
-                                <input class="form-control" id="url" name="url" placeholder="url" type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="nameTour" class="col-sm-2 control-label">Usuario</label>
-
-                            <div class="col-sm-10">
-                                <select class="form-control" id="user_id" name="user_id">
-                                    <option value="1">User 1</option>
-                                    <option value="2">User 2</option>
-
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="date_start" class="col-sm-2 control-label">Fecha Inicio</label>
-
-                            <div class="col-sm-10 ">
-                                {{ Form::date('date_start', \Carbon\Carbon::now())  }}
-                            </div>
-                        </div>
-
-
-
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-default">Cancel</button>
-                        <button type="submit" class="btn btn-info pull-right">Sign in</button>
+
+                        @if (count($errors) > 0)
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+
+
+                        <a href="{{url('tours')}}" class="btn btn-default" role="button">Cancel</a>
+                        <button type="submit" class="btn btn-info pull-right">Alta</button>
                     </div>
                     <!-- /.box-footer -->
                 </div>
                 {!! Form::close() !!}
             </div>
-
-
         </div>
-
-
     </div>
-
-
-
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
 @endsection
 

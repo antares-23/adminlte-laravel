@@ -5,27 +5,27 @@
 @section('main-content')
 
     <div class="container-fluid ">
-        Tours
+        <h1>Subdominios</h1>
+        @if($subdomains->is_admin )
+          <h4>Panel de Administrador</h4>
+        @endif
 
 
         <div class="col-xs-12">
 
-            <a href="{{url('subdomains/create')}}" class="btn btn-info" role="button">Crear Nuevo Subdominio</a>
-
             @if($subdomains->is_admin )
-                <a href="{{url('users/create')}}" class="btn btn-info" role="button">Alta cliente</a>
+                <a href="{{url('subdomains/create')}}" class="btn btn-info" role="button">Crear Nuevo Subdominio</a>
             @endif
-
-            <a href="{{route('photos.show',1)}}" class="btn btn-info" role="button">Imagenes</a>
-
-
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Listado de Tours</h3>
+                    <h3 class="box-title">Listado de Subdominios</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                    <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                                     <thead>
                                     <tr role="row">
                                         <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Nombre">Nombre</th>
@@ -33,7 +33,7 @@
                                         <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Nombre">Cliente</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Estatus">Estatus</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Fecha alta">Fecha alta</th>
-                                        <!--th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Agregar imagenes">Agregar imagenes</th-->
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Agregar imagenes">Agregar Tours</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Fecha baja">Dar de baja</th>
 
 
@@ -59,9 +59,10 @@
                                         </td>
                                         <td>{{$subdomain->date_start}}</td>
 
-                                        <!--td>
+                                        <td>
+                                            <a href="{{url('tours/create', $subdomain->id)}}" class="btn btn-info" role="button">Nuevo Tour</a>
 
-                                        </td-->
+                                        </td>
 
 
                                         <td>

@@ -24,59 +24,17 @@
                 {!! Form::open(['method' =>'POST', 'action'=>'ToursController@store', ]) !!}
                 <div class="form-horizontal">
                     <div class="box-body">
-
-
-                        <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">Nombre</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" id="name" name="name" placeholder="Nombre del tour" type="text" >
+                        <div class="container-fluid ">
+                            <div class="form-group">
+                                {!! Form::label('name','Nombre del Tour') !!}
+                                {!! Form::text('name',null,['class'=>'form-control']) !!}
+                                {!! Form::hidden('subdomain_id',$id) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('name','Fecha de Inicio') !!}
+                                {!! Form::date('date_start', \Carbon\Carbon::now(),['class'=>'form-control'])  !!}
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="url" class="col-sm-2 control-label">Url</label>
-
-                            <div class="col-sm-10">
-                                <input class="form-control" id="url" name="url" placeholder="url" type="text" >
-                            </div>
-                        </div>
-
-                        <!--div class="form-group">
-                            <label for="total_size" class="col-sm-2 control-label">Espacio Asignado</label>
-
-                            <div class="col-sm-10">
-                                <input class="form-control" id="total_size" name="total_size" placeholder="Tamaño máximo total" type="number" >
-                            </div>
-                        </div-->
-
-                        <div class="form-group">
-                            <label for="nameTour" class="col-sm-2 control-label">Subdominio</label>
-
-                            <div class="col-sm-10">
-                                <select class="form-control" id="user_id" name="user_id" >
-                                    <option>Seleccione un subdominio</option>
-                                    @if(count($users)>1)
-                                        @foreach($users as $user)
-                                            <option value="{{$user->id}}">{{$user->name}}</option>
-                                        @endforeach
-                                    @else
-                                        <option value="{{$users->id}}">{{$users->name}}</option>
-                                    @endif
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="date_start" class="col-sm-2 control-label">Fecha Inicio</label>
-
-                            <div class="col-sm-10 ">
-                                {{ Form::date('date_start', \Carbon\Carbon::now())  }}
-                            </div>
-
-                        </div>
-
-
-
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
@@ -90,7 +48,7 @@
                         @endif
 
 
-                        <a href="/tours" class="btn btn-default" role="button">Cancel</a>
+                        <a href="{{url('tours')}}" class="btn btn-default" role="button">Cancel</a>
                         <button type="submit" class="btn btn-info pull-right">Alta</button>
                     </div>
                     <!-- /.box-footer -->
@@ -106,8 +64,8 @@
 
 
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!--script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script-->
 
 
 @endsection

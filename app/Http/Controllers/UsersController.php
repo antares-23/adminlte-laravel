@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Auth;
 
 class UsersController extends Controller
 {
@@ -15,7 +16,17 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+
+        $user=Auth::user();
+        if($user->role) {
+            $clients= User::all();
+            $clients->is_admin=1;
+            return view('user.clients', compact('clients'));
+        }
+
+        $client= User::findorFail($user->id);
+        return view('user.show', compact('client'));
+
     }
 
     /**
@@ -38,9 +49,10 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
+
         $request->merge(['password' => Hash::make($request->password)]);
         User::create($request->all());
-        return redirect('tours');
+        return redirect('users');
     }
 
     /**
@@ -63,6 +75,9 @@ class UsersController extends Controller
     public function edit($id)
     {
         //
+        $client=User::findOrFail($id);
+
+        return view('user.edit', compact('client') );
     }
 
     /**
@@ -74,7 +89,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findorFail($id);
+        $user->update($request->all());
+
+        //return "ok!";
+        return redirect('users');
     }
 
     /**
