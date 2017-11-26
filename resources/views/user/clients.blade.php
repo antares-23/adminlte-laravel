@@ -25,7 +25,9 @@
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Estatus">Correo</th>
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Fecha alta">rol</th>
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Fecha baja">Editar</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Fecha baja">Cargar Imagenes</th>
+                                            @if(!$clients->is_admin)
+                                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Fecha baja">Cargar Imagenes</th>
+                                            @endif
                                         </tr>
                                         </thead>
 
@@ -46,9 +48,11 @@
                                                     <a href="{{route('users.edit',$client->id)}}" class="btn btn-info" role="button" >Editar</a>
                                                 </td>
 
+                                                @if(!$clients->is_admin)
                                                 <td>
                                                     <a href="{{route('photos.show',$client->id)}}" class="btn btn-info" role="button">Imagenes</a>
                                                 </td>
+                                                    @endif
 
                                             </tr>
                                         @endforeach
