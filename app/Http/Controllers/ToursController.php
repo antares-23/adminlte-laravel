@@ -21,18 +21,31 @@ class ToursController extends Controller
     public function index()
     {
         $user=Auth::user();
-        $subdomain =  Subdomain::select('id')->where('user_id', '=',$user->id)->get();
 
-        if($subdomain->count())
-        {
-            $tours =  Tours::where('subdomain_id','=',$subdomain[0]->id)->get();
-            $tours->subdomain_id=$subdomain[0]->id;
-            $tours->is_admin=$user->role?1:0;
+        if($user->role){
+
+            $tours =  Tours::all();
+            $tours->subdomain_id=0;
+            $tours->is_admin=1;
+
         }
 
-        else
-        {
-            $tours =  null;
+        else{
+
+            $subdomain =  Subdomain::select('id')->where('user_id', '=',$user->id)->get();
+
+            if($subdomain->count())
+            {
+                $tours =  Tours::where('subdomain_id','=',$subdomain[0]->id)->get();
+                $tours->subdomain_id=$subdomain[0]->id;
+                $tours->is_admin=0;
+            }
+
+            else
+            {
+                $tours =  null;
+
+            }
 
         }
 
